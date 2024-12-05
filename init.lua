@@ -1,2 +1,8 @@
-require("Alexh.core")
-require("Alexh.lazy")
+require("nvim.core")
+require("nvim.lazy")
+
+local gdproject = io.open(vim.fn.getcwd() .. "/project.godot", "r")
+if gdproject then
+	io.close(gdproject)
+	vim.fn.serverstart("./godothost")
+end

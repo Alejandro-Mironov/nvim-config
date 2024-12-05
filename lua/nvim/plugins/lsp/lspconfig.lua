@@ -77,7 +77,10 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-
+		require("lspconfig")["gdscript"].setup({
+			name = "godot",
+			cmd = vim.lsp.rpc.connect("127.0.0.1", "6005"),
+		})
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
 			function(server_name)
